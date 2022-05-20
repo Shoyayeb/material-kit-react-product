@@ -13,6 +13,7 @@ const Products = () => {
   useEffect(() => {
     axios.get('/api').then((result) => {
       console.log(result);
+      setProducts(result.data.users)
     }).catch((error) => {
       console.log(error);
     })
