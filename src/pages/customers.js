@@ -1,31 +1,64 @@
 import Head from 'next/head';
-import { Box, Container } from '@mui/material';
-import { CustomerListResults } from '../components/customer/customer-list-results';
-import { CustomerListToolbar } from '../components/customer/customer-list-toolbar';
 import { DashboardLayout } from '../components/dashboard-layout';
-import { customers } from '../__mocks__/customers';
+import {
+  Box,
+  Button,
+  IconButton,
+  TextField
+} from '@mui/material';
+import Send from '@mui/icons-material/Send';
 
+const handleSubmit = (e) => {
+  e.preventDefault();
+}
+const handleChange = (e) => {
+  console.log(e);
+
+}
 const Customers = () => (
   <>
     <Head>
       <title>
-        Customers | Material Kit
+        Add products | Material Kit
       </title>
     </Head>
-    <Box
-      component="main"
-      sx={{
-        flexGrow: 1,
-        py: 8
-      }}
-    >
-      <Container maxWidth={false}>
-        <CustomerListToolbar />
-        <Box sx={{ mt: 3 }}>
-          <CustomerListResults customers={customers} />
-        </Box>
-      </Container>
-    </Box>
+    <form onSubmit={handleSubmit}>
+      <Box sx={{ my: 3, mx: 30 }}>
+
+        <TextField
+          fullWidth
+          label="Product Name"
+          margin="normal"
+          name="name"
+          onChange={handleChange}
+          variant="outlined"
+        />
+
+        <TextField
+          fullWidth
+          multiline
+          label="Product Description"
+          margin="normal"
+          name="description"
+          onChange={handleChange}
+          variant="outlined"
+        />
+
+        <TextField
+          fullWidth
+          type="number"
+          label="Product Price"
+          margin="normal"
+          name="price"
+          onChange={handleChange}
+          variant="outlined"
+        />
+      </Box>
+      <Button
+        sx={{ mx: 50 }}
+        variant="contained"
+      >Contained</Button>
+    </form>
   </>
 );
 Customers.getLayout = (page) => (
