@@ -5,13 +5,14 @@ import {
   Button,
   TextField
 } from '@mui/material';
+import axios from 'axios';
 
 
 const Customers = () => {
   const [productData, setProductData] = useState({});
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:3000/api', productData)
+    axios.post('http://localhost:3000/api', productData).then((result) => { alert(result.data.message); })
   }
   const handleChange = (e) => {
     const field = e.target.name;
